@@ -3,7 +3,7 @@ Unfortunately, our lives have been deeply affected by the corona virus over thes
 
 In this project, correlations between features in the global COVID-19 dataset using visualisation techniques are exported and Exploratory data analysis, and data visualisation are performed on the data.
 
-Tech: Python, Pandas, Matplotlib, Seaborn, SciPy
+Tech: Python, Pandas, Matplotlib, Seaborn
 
 ![](resources/covid.jpg)
 
