@@ -7,7 +7,7 @@ Tech: Python, Pandas, Matplotlib, Seaborn
 
 ![](resources/covid.jpg)
 
-# Performed works
+# Methodology
 - Data Exploration
 - Data Preprocessing
 - Exploratory Visualization

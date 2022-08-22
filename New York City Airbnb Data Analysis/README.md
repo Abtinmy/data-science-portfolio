@@ -5,7 +5,7 @@ Tech: Python, Pandas, Matplotlib, Seaborn, SciPy
 
 ![](resources/df_distribution_with_map_price_apply.png)
 
-# Performed works
+# Methodology
 - Data Exploration
 - Data Preprocessing
 - Exploratory Visualization

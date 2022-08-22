@@ -6,7 +6,7 @@ Tech: Python, Scikit-Learn, Pandas, Matplotlib, Seaborn
 
 ![](resources/spotify.png)
 
-# Performed works
+# Methodology
 In this project, I created a terminal-based python application capable of reading a dataset as the input consisting of feature analyses of some music that a specific user like which is provided by Spotify’s API. The application uses a classifier trained using the large dataset consisting of available music on Spotify and their genre to predict genres of music in the input dataset. Then music will be divided into different clusters by a clustering algorithm which is trained with the main dataset. After that, five playlists are recommended to the user based on total number of input music in each cluster.
 
 1. Download and preprocess Spotify music dataset which is provided on Kaggle.

@@ -5,7 +5,7 @@ Tech: Python, Pandas, Matplotlib, Seaborn, SciPy
 
 ![](resources/crime.jpg)
 
-# Performed works
+# Methodology
 - Data Exploration
 - Data Preprocessing
 - Exploratory Visualization

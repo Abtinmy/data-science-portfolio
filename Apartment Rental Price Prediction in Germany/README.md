@@ -7,7 +7,7 @@ Tech: Python, Pandas, Numpy, Matplotlib, Seaborn, SciPy, Dask
 
 ![](images/icon.png)
 
-# Performed works
+# Methodology
 - Exploratory Data Analysis
 - Data Preprocessing (outlier detection, feature extraction, feature selection, handling null values, scailing, and encoding)
 - Regression

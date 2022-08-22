@@ -5,7 +5,7 @@ Tech: Python, Scikit-Learn, Imblearn, Pandas, Matplotlib, Seaborn
 
 ![](images/fraud.jpg)
 
-# Performed works
+# Methodology
 In this project, I preform different classification methods in order to predict whether an app will be downloaded after clicking on a mobile app advertisement using ‘TalkingData adtracking fraud detection’ dataset. At the end, classification report, ROC curve, and decision boundaries for each classifier will be reported.
 
 - Data Exploration
