@@ -1,0 +1,247 @@
+\documentclass[11pt]{article}
+\usepackage{colacl}
+\usepackage{graphicx}
+\usepackage[font=small,skip=10pt]{caption}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\setcounter{secnumdepth}{4}
+\usepackage{makecell}
+\sloppy
+
+
+
+\title{Mobile Price Classification}
+\author
+{Abtin Mahyar \\ Department of Computer Science \\ Shahid Beheshti University \\ email:abtinmahyar[at]gmail[dot]com}
+
+
+
+
+\begin{document}
+\maketitle
+
+
+\begin{abstract}
+This report gives an overview of the various machine learning algorithms implemented to classify price range of a mobile device based on different features that a mobile has. Exploratory data analysis was performed on the dataset in order to take insights from the data. Feature selection and feature extraction was performed using different machine learning algorithms with the help of Scikit-learn package, and various machine learning models was used to build supervised learning multi-class classifiers, that provided an accuracy of 97\% on the test dataset. The dataset was obtained from the popular data science competition portal, Kaggle. 
+\end{abstract}
+
+\section{Introduction}
+Making predictions is something a business or system depends on, which is indirectly dependant on data analytics. Data analytics is the science of analyzing raw data in order to make conclusions about that information.This analysis can then be used to optimize processes to increase the overall efficiency of a business or system. The dataset here, that I have obtained from Kaggle, is a sample of various types of mobile devices. A new mobile company wants to compete with other big companies, in order to that, they want to know how to estimate price of mobiles their company creates.
+This project aims to develop a price range prediction model with comparing different popular models and choose the best one that can recognize the patterns in the data.
+
+\section{Methodology}
+The performed methodology can be described by the following figure, which will be further elaborated on, in the following subsections.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=4.5cm,height=4.5cm,scale=0.5]{images/Methodology.jpg}
+\caption{Performed methodology on the dataset}
+\end{figure}
+
+
+\subsection{Exploratory Data Analysis}
+The data was presented in the form of a csv file on the Kaggle data science competition portal.
+This dataset has valuable information about the battery power, ram, screen size, number of cores, and other related variables of different mobile devices. This dataset has 2,000 records with various types of fields which each record refers to a particular mobile device. Each record has 20 attributes and a price range which were described completely on the \href{https://www.kaggle.com/datasets/iabhishekofficial/mobile-price-classification}{dedicated dataset page}.As it can be suspected based on the attributes, some of the features are useless or illegible, which means they must be discarded during the preprocessing section. There is no null values in the whole dataset. Distribution of different features in the dataset is shown in Figure \ref{fig:distributions}.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=7.5cm,height=8.5cm,scale=0.5]{images/distributions.png}
+\caption{Distribution of each feature in the dataset}
+\label{fig:distributions}
+\end{figure}
+
+Correlation analysis between each feature was performed on the data and the results can be seen in Figure \ref{fig:corr}. As it can be seen most of the features are not correlated with each other, the correlation statistical analysis between features that are probably correlated, according to the above figure, will be performed in the hypothesis subsection.Top correlated features to the target variable (price range) is shown in Table \ref{table:corr}. 
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=7.5cm,height=7.5cm,scale=0.5]{images/correlation.png}
+\caption{Correlation between each feature in the dataset}
+\label{fig:corr}
+\end{figure}
+
+\begin{table}[h]
+ \begin{center}
+\begin{tabular}{|l|l|}
+
+	\hline
+     Feature & Value  \\
+     \hline\hline
+     Ram & 0.91 \\
+	 Battery Power & 0.20\\
+     Pixel Resolution Width & 0.16 \\
+     Pixel Resolution height & 0.14 \\
+     Internal Memory & 0.04 \\
+     \hline
+     
+ \end{tabular}
+\caption{Top correlated features to the price range}
+\label{table:corr}
+ \end{center}
+\end{table}
+
+As it can be seen from Figure \ref{fig:distributions}, none of the distributions has a normal distribution, because most of machine learning algorithms have an assumption that the data should have a normal distribution and have same scale, this issue should be handled in preprocessing section. Also, skewness and kurtosis of different features in the dataset has been calculated, most skewed features are listed in Table \ref{table:corr}. Since skewness is a parameter that can badly influence the prediction model, this issue should be handled in preprocessing section.
+
+\begin{table}[h]
+ \begin{center}
+\begin{tabular}{|l|l|l|}
+
+	\hline
+     Feature & Skewness & Kurtosis  \\
+     \hline\hline
+     Front Camera & 1.02 & 0.28 \\
+     Pixel Resolution height & 0.68 & -0.32 \\
+     Screen Width & 0.63 & -0.39 \\
+     \hline
+     
+ \end{tabular}
+\caption{Most skewed features}
+\label{table:skew}
+ \end{center}
+\end{table}
+
+\subsubsection{Hypothesis testing}
+\paragraph{Normality}
+With using Shapiro-Wilk test, which is a statistical test that assumes that the observations in the sample data are independent and identically distributed, I tested every feature in the dataset to see if they have normal distribution or not, and it comes out that every feature in the dataset does not have Gaussian distribution and their p-values are less than 0.05. 
+
+\paragraph{Correlation}
+With using Chi-Squared test, which is a statistical which checks whether two categorical variables are correlated or not, I tested every feature in the dataset with each other and I got the same result as Figure \ref{fig:corr}. Some performed tests and their statistics that have performed are listed as follows:
+
+
+\begin{table}[h]
+ \begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+
+	\hline
+     Feature 1 & Feature 2 & P-Value & statistic & Result  \\
+     \hline\hline
+     4G & 3G & 0.000 & 679.94 & \thead{Reject $H_0$,\\ dependent} \\
+     4G & Dual Sim & 0.92 & 0.01 & \thead{Accept $H_0$,\\ independent} \\
+     \hline
+     
+ \end{tabular}
+\caption{Correlation tests using Chi-Squared test}
+ \end{center}
+\end{table}
+
+\paragraph{Non-parametric Statistical tests}
+Since every feature in the dataset do not have normal distribution, I used non-parametric test in order to compare distributions of the features. With using Mann-Whitney U test, which is a statistical test that checks whether the distributions of two independent samples are equal or not, I tested different features with each other. some performed test and their statistics are listed as below:
+
+\begin{table}[h]
+ \begin{center}
+ \scalebox{0.7}{
+\begin{tabular}{|c|c|c|c|c|}
+
+	\hline
+     Feature 1 & Feature 2 & P-Value & statistic & Result  \\
+     \hline\hline
+     \thead{Front\\ Camera} & \thead{Clock\\ Speed} & 0.00 & 2605106.0 & \thead{Reject $H_0$,\\ different distributions} \\
+     \thead{Battery\\ Power} & \thead{Pixel\\ Resolution\\ width} & 0.33 & 1965063.5 & \thead{Accept $H_0$,\\ same distributions} \\
+     \hline
+     
+ \end{tabular}}
+\caption{Comparing distributions between selected features}
+ \end{center}
+\end{table}
+
+\subsection{Preprocessing}
+The preprocessing involved handling skewed data and unscaled features, using normalization method with min-max scaler which transforms the data with following formula:
+
+\begin{center}
+    $ x_{new} = \frac{x - min}{max - min}$
+\end{center}
+
+After normalization still skewness of features from Table \ref{table:skew} are high which can be resulted as a reduction in overall accuracy. In order to reduce influence of these skewed data, some other transformers such as square root, and logarithm are applied to these features. Also, categorical and numerical variables converted to their appropriate data types.
+
+
+\subsection{Feature Extraction}
+In this step two different extracted from the previous feature based on their correlation to the target variable. First one is pixel resolution of the whole area of the mobile device which is the multiplication of pixel resolution of the width and height of the mobile screen. The second one is the size of the whole screen in centimeters which is the multiplication of size of the width and height of the screen.
+
+\subsection{Feature Selection}
+Feature selection is performed to automatically search for the subset of the attributes in the dataset to find the one with with the highest accuracy. two different method were used in order to calculate most important features for this task which could help the final model to achive better score on the test set. First, a Random Forest classifier trained on the dataset with default hyperparameters and the most important features calculated and stored, in order to fit to the final model. Second, with using forward and backward selection techniques and final model, most important feature for this task are selected and fit to the final model. Both methods selected the same features.
+
+\subsection{Classification}
+
+Several different classifiers were appplied on the dataset which were generated by carrying out the feature extraction and feature selection phases, but in the following subsections only the top four classifiers with the highest accuracy will be discussed for the evaluation of performance on test data set, These classifiers are listed in Table \ref{table:models}. Also, for evaluating model performances, since the distribution of different classes in the dataset are excatly equal to each other, I used f1 score with macro average method. In addition, k-fold cross validation was performed on the training set before evaluating the test data set, and in this project, for all classifiers, the default k is set to 10. The advanatages of performing k-fold cross validation included that it prevents overfitting of the classifier model and provides generality to the model that could later better classify an independent data set, such as the test data set. The original dataset has split to train and test set, The size of test data set here is 400 instances and train data set is 1600 instances.
+
+\begin{table}[h]
+ \begin{center}
+\begin{tabular}{|l|l|l|}
+
+	\hline
+     Model & Train Accuracy & Test Accuracy  \\
+     \hline\hline
+     Logistic Regression CV & 0.96 & 0.92 \\
+	 Gradient Boosting & 1.0 & 0.86\\
+     Bagging & 0.99 & 0.86 \\
+     Random Forest & 1.0 & 0.84 \\
+     \hline
+     
+ \end{tabular}
+\caption{Top models based on their performances(macro averaged f1)}
+\label{table:models}
+ \end{center}
+\end{table}
+
+\subsubsection{Logistic Regression CV}
+Logistic regression is a process of modeling the probability of a discrete outcome given an input variable. Multinomial logistic regression can model scenarios where there are more than two possible discrete outcomes. In Logistic Regression CV, model takes two additional hyperparmeters to tune compared to the simple logistic regression, the range of "C" and ratio of L1 constant which is a coefficient when using elastic-net solver. This model tries to find the best values for these hyperparameters. There are also other hyperparameters to tune which were calculated using grid search cross validation which are listed in Table \ref{table:hyper_lgreg}. This model achieved 95.81\% f1 score on the training set and 93.86\% on test set after hyperparameter tunning.
+
+
+\begin{table}[h]
+ \begin{center}
+\begin{tabular}{|l|l|}
+
+	\hline
+     Hyperparameter & Value  \\
+     \hline\hline
+     C & 3792.69 \\
+	 Penalty & L2\\
+     solver & lbfgs \\
+     \hline
+     
+ \end{tabular}
+\caption{Tunned hyperparameters for logistic regression classifier}
+\label{table:hyper_lgreg}
+ \end{center}
+\end{table}
+
+\subsubsection{Gradient Boosting}
+Gradient boosting is a machine learning technique used in regression and classification tasks, among others. It gives a prediction model in the form of an ensemble of weak prediction models, which are in our case decision trees. Like other boosting methods, gradient boosting combines weak "learners" into a single strong learner in an iterative fashion. There are some hyperparameters that has to be tuned for this model which were optimized by the randomized search cross validation. This model achieved 100\% f1 score on the training set and 88.30\% on test set after hyperparameter tunning.
+
+\subsubsection{Bagging}
+A Bagging classifier is an ensemble meta-estimator that fits base classifiers (which in our case is decision tree) each on random subsets of the original dataset and then aggregate their individual predictions (either by voting or by averaging) to form a final prediction. There are some hyperparameters that has to be tuned for this model which were optimized by the randomized search cross validation. This model achieved 94.92\% f1 score on the training set and 88.11\% on test set after hyperparameter tunning.
+
+\subsubsection{Random Forest}
+Random forest is a spin-off of the decision learning algorithm where many decision trees are created over an arbitrary subspace and the decision at each split of the tree is done by a random process instead of a discrete optimized split, and the mode of the classifications of these individual decision trees forms the final output classification, in our case one of the four classes of price range. There are some hyperparameters that has to be tuned for this model which were optimized by the randomized search cross validation. This model achieved 96.4\% f1 score on the training set and 88.62\% on test set after hyperparameter tunning.
+
+\section{Related Work}
+There were a number of things that increased accuracy to this project. These include, exploring influence of different scailing method instead of min-max scaler which were used in preprocessing sub section in order to get the higher score. Various types of scaling methods were applied to the dataset and their influences were calculated, the full result is listed in Table \ref{table:scaler}. As it can be seen from the following table, min-max scaler and maximum absolute scaler has the most influence on the overall result.
+
+\begin{table}[h]
+ \begin{center}
+\begin{tabular}{|l|l|l|}
+
+	\hline
+     Scaler & Train Accuracy & Test Accuracy  \\
+     \hline\hline
+     Raw data & 0.53 & 0.56 \\
+	 Standard & 0.95 & 0.93\\
+     min-max & 0.95 & 0.94 \\
+     Maximum Absolute & 0.95 & 0.94 \\
+     Robust & 0.95 & 0.93 \\
+     \hline
+     
+ \end{tabular}
+\caption{Influence of different scaling method on the overall accuracy (macro averaged f1)}
+\label{table:scaler}
+ \end{center}
+\end{table}
+
+Another technique that could be applied in the preprocessing section is to apply PCA on the dataset and use different proportion of variance in order to decrease the number of features. It turns out that for high values of proportion of variance (larger than 0.7), this technique does not have much affect on the model's predictions, and model will achieve 56\% accuracy on the test set. Also, lower values of proportion of variance can be resulted as a reduction in overall accuracy.
+
+\section{Conclusions}
+As it can be concluded from above sub sections, the best model that can predict the data is Logistic Regression with the hyperparameters which were described in Table \ref{table:hyper_lgreg}. After fitting the feature selected dataset to the final model, it's accuracy increased and achieved 96\% on training set and 97\% on the test set, which can recognize patterns in the dataset and predict their price range precisely. 
+
+\bibliographystyle{acl}
+\bibliography{sample}
+
+\end{document}
