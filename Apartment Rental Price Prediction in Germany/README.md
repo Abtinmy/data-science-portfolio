@@ -18,4 +18,4 @@ Tech: Python, Pandas, Numpy, Matplotlib, Seaborn, SciPy, Dask
 
 # Credits
 - [Dataset on Kaggle](https://www.kaggle.com/datasets/corrieaar/apartment-rental-offers-in-germany)
-- [Final Reprot](report.pdf)
+- [Final Reprot](apartment_rental_price_prediction.pdf)
