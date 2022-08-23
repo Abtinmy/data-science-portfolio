@@ -32,6 +32,20 @@ Tools
  This project gives an overview of the various machine learning algorithms implemented to predict rental price of an apartment based on different features that a rental offer has. Exploratory data analysis was performed on the dataset in order to take insights from the data. Feature selection and feature extraction was performed using different machine learning algorithms with the help of Scikit-learn package, and various machine learning models was used to build supervised learning regression, that provided a root mean squared error of 149.33 on the test dataset, which is an acceptable amount of error according to the rental price range. ()
 
 
+ ### Deep Learning
+ #
+
+ <img align="left" width="250" height="150" src=""> **[Dogs vs. Cats image classifier]()**
+
+ Performance comparison of VGG16 and ResNet50 on Dogs vs. Cats dataset, achieving 98% accuracy on the test data using learning rate schedulers and data augmentation. Tech: Python, TensorFlow, Keras (Computer Vision, CNN, Transfer learning)
+
+ #
+
+ <img align="left" width="250" height="150" src=""> **[Digit Recognizer]()**
+
+ Fitting deep CNN on MNIST dataset, achieving 99% accuracy on the test data (Top 11% solution on Kaggle) using batch normalization, data augmentation, and learning rate scheduling. Tech: Python, TensorFlow, Keras (Computer Vision, CNN)
+
+ 
  ### Data Analysis and Visualization 
  #
 
@@ -52,4 +66,9 @@ Tools
  Performing statistical tests, Exploratory data analysis, and data visualisation on crime reports from Louisville goverment. (EDA, Data Visualisation, Data Cleaning, Statistical Analysis)
 
 
+ ### Projects 
+ #
 
+ <img align="left" width="250" height="150" src=""> **[Machine Learning Cloud Services]()**
+
+ In this project, 4 different machine learning services including time series interpolation, date format transformation, outlier detection, and imbalanced data management service are implemented using various methods. (Data preprocessing methods, Imbalanced data, Interpolation, outlier detection)
