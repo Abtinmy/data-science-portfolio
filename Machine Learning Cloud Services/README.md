@@ -6,7 +6,7 @@ In this project, 4 different machine learning services are implemented. The inpu
 Tech: Python, Pandas, Scikit-learn, Docker, Flask, Matplotlib, Imblearn, statsmodes, khayyam
 
 # Services
-* Service 1: Time Series Interpolation Service
+   * Service 1: Time Series Interpolation Service
    
      This Service takes some Date-Time data (either in Chiristian(miladi) or Persian(shamsi) date-time format) along with some values. The service then useses interpolation methods to resample missing data. Performing linear, polynomial, and spline interpolation methods on daily, monthly, hour, minute, and seconds time series data. For miladi format I used the pre-defined function in pandas and for shamsi I convert it to miladi and then performed the interpolation and again convert it to shamsi format. make sure to provide an appropriate order in request's config parameter when using spline or polynomial method.
 
