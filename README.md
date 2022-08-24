@@ -5,9 +5,8 @@ Tools
   - **Python**: NumPy, Pandas, Seaborn, Matplotlib, SciPy
   - **Machine Learning and Deep Learning**: scikit-learn, TensorFlow, keras, Imblearn, Dask
 
-## Contents
- ### Machine Learning
- #
+# Contents
+ ## Machine Learning
 
  <img align="left" width="250" height="150" src="Spotify Music Recommander/resources/spotify.png"> **[Spotify Music Recommander System](https://github.com/Abtinmy/data-science-portfolio/tree/main/Spotify%20Music%20Recommander)**
 
@@ -35,8 +34,7 @@ Tools
 
 <br />
 
- ### Deep Learning
- #
+ ## Deep Learning
 
  <img align="left" width="250" height="150" src="images/dogsvscats.png"> **[Dogs vs. Cats image classifier](https://github.com/Abtinmy/data-science-portfolio/blob/main/Dogs_vs_Cats.ipynb)**
 
@@ -52,8 +50,8 @@ Tools
 
 <br />
 
- ### Data Analysis and Visualization 
- #
+ ## Data Analysis and Visualization 
+ 
 
  <img align="left" width="250" height="150" src="COVID-19 Data Analysis/resources/covid.jpg"> **[Data Analysis on COVID-19 dataset by OWID](https://github.com/Abtinmy/data-science-portfolio/tree/main/COVID-19%20Data%20Analysis)**
 
@@ -78,8 +76,8 @@ Tools
 <br />
 <br />
 
- ### Projects 
- #
+ ## Projects 
+ 
  <img align="left" width="250" height="150" src="Machine Learning Cloud Services/images/icon.png"> **[Machine Learning Cloud Services](https://github.com/Abtinmy/data-science-portfolio/tree/main/Machine%20Learning%20Cloud%20Services)**
 
  In this project, 4 different machine learning services including time series interpolation, date format transformation, outlier detection, and imbalanced data management service are implemented using various methods. (Data preprocessing methods, Imbalanced data, Interpolation, outlier detection)
