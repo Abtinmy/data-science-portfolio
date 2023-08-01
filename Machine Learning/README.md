@@ -20,6 +20,11 @@
 
 #
 
+  **[Playground](./Playground/)**
+
+ This project is focused on the implementation of fundamental machine learning models and algorithms from scratch in Python. It includes various regression models, such as Linear Regression, Logistic Regression, Multi-Variable Linear Regression, and a Normal Equation Solver. Additionally, it covers different optimization methods for these regression models, including Gradient Descent, Stochastic Gradient Descent, Stochastic Gradient Descent with Momentum, AdaGrad, RMSProp, and Adam. Furthermore, the project includes a simple implementation of a neural network. Overall, the implementations aim to provide a deeper understanding of the inner workings of machine learning algorithms.
+
+#
 
  <img align="left" width="250" height="200" src="Mobile Price Classification/images/icon.png"> **[Mobile Price Classification](https://github.com/Abtinmy/data-science-portfolio/tree/main/Mobile%20Price%20Classification)**
 
@@ -30,4 +35,3 @@
  <img align="left" width="250" height="200" src="Apartment%20Rental Price Prediction in Germany/images/icon.png"> **[Apartment Rental Price Prediction in Germany](https://github.com/Abtinmy/data-science-portfolio/tree/main/Apartment%20Rental%20Price%20Prediction%20in%20Germany)**
 
  This project gives an overview of the various machine learning algorithms implemented to predict rental price of an apartment based on different features that a rental offer has. Exploratory data analysis was performed on the dataset in order to take insights from the data. Feature selection and feature extraction was performed using different machine learning algorithms with the help of Scikit-learn package, and various machine learning models was used to build supervised learning regression, that provided a root mean squared error of 149.33 on the test dataset, which is an acceptable amount of error according to the rental price range.
- 
