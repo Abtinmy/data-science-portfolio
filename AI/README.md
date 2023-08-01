@@ -1,3 +1,5 @@
+# Artificial Intelligence
+
  **[Snake Cube Solver](./SnakeCube/)**
 
 ![](./images/snake-cube.png)

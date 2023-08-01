@@ -1,3 +1,5 @@
+# Computer Vision
+
 <img align="left" width="250" height="200" src="images/quilt.png"> **[Image Quilting with Min Cut](./Image_Quilting.ipynb)**
 
 In this project, we implement an image quilting technique enhanced with the minimum cut algorithm to achieve seamless and coherent texture synthesis. Image quilting involves stitching together smaller image patches to create larger textures. By integrating the minimum cut algorithm, we aim to minimize visible artifacts and improve the quality of the synthesized textures at patch boundaries. 
